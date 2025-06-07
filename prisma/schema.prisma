@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(uuid())
+  email       String        @unique
+  name        String?
+  password    String
+  role        UserRole      @default(VETERINARIAN)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  appointments Appointment[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  VETERINARIAN
+  TECHNICIAN
+  RECEPTIONIST
+  ADMIN
+}
+
+model Client {
+  id          String        @id @default(uuid())
+  email       String        @unique
+  name        String
+  phone       String?
+  address     String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  pets        Patient[]
+
+  @@map("clients")
+}
+
+model Patient {
+  id        String        @id @default(uuid())
+  name      String
+  species   String
+  breed     String?
+  age       Int
+  weight    Float?
+  medical_history_summary String?
+  ownerId   String
+  owner     Client        @relation(fields: [ownerId], references: [id])
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  appointments Appointment[]
+
+  @@unique([name, ownerId], name: "name_owner_unique_constraint")
+  @@map("patients")
+}
+
+model Appointment {
+  id              String    @id @default(uuid())
+  appointmentDate DateTime
+  type            String?   // e.g., CHECKUP, VACCINATION, SURGERY
+  reason          String?
+  notes           String?
+  status          AppointmentStatus @default(SCHEDULED)
+  patientId   String
+  patient     Patient   @relation(fields: [patientId], references: [id])
+  userId      String // Veterinarian or staff user
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("appointments")
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}

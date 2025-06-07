@@ -1,0 +1,30 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^7.1.10",
+    "@react-navigation/stack": "^7.3.3",
+    "axios": "^1.9.0",
+    "expo": "~50.0.17",
+    "expo-status-bar": "~1.11.1",
+    "formik": "^2.4.6",
+    "react": "18.2.0",
+    "react-native": "0.73.6",
+    "react-native-calendars": "^1.1312.1",
+    "react-native-paper": "^5.14.5",
+    "react-native-safe-area-context": "^5.4.1",
+    "react-native-screens": "^4.11.1",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}

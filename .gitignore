@@ -1,0 +1,44 @@
+node_modules
+.DS_Store
+*.log
+# Prisma
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+.env
+# TSC
+*.tsbuildinfo
+dist/
+
+# Frontend common
+node_modules/
+
+# Web App (Vite)
+packages/web-app/dist/
+packages/web-app/node_modules/
+packages/web-app/.eslintcache
+
+# Web App (CRA - if used)
+# packages/web-app/build/
+
+# Mobile App (Expo)
+packages/mobile-app/node_modules/
+packages/mobile-app/.expo/
+packages/mobile-app/npm-debug.log
+packages/mobile-app/yarn-debug.log
+packages/mobile-app/yarn-error.log
+packages/mobile-app/.idea/
+packages/mobile-app/.vs/
+packages/mobile-app/web-build/ # if you build for web with expo
+
+# IDE specific
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+/src/generated/prisma

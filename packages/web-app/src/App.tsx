@@ -6,12 +6,12 @@ import PatientDetailPage from './pages/PatientDetailPage';
 import AppointmentListPage from './pages/AppointmentListPage';
 import AppointmentDetailPage from './pages/AppointmentDetailPage';
 import Navbar from './components/Navbar';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 // Basic placeholder for a home page or dashboard
 const HomePage = () => (
   <Container>
-    <Typography variant="h3" component="h1" gutterBottom sx={{mt:2}}>
+    <Typography variant="h3" component="h1" gutterBottom sx={{mt:2}} className="text-3xl font-bold underline">
       Welcome to the Vet App Portal
     </Typography>
     <Typography>
